@@ -1,0 +1,135 @@
+{
+  "nav": {
+    "home": "Kryefaqja",
+    "about": "Rreth Nesh",
+    "apartments": "Apartamentet",
+    "gallery": "Galeria",
+    "location": "Vendndodhja",
+    "contact": "Kontakti",
+    "book": "Rezervo një Vizitë"
+  },
+  "hero": {
+    "label": "Rezidenca Luksoze",
+    "title": "Pranvera",
+    "titleItalic": "Tower",
+    "subtitle": "Ku arkitektura takohet me aspiratën. 10 kate rezidencash premium mbi qytet.",
+    "cta1": "Eksploro Apartamentet",
+    "cta2": "Rezervo një Vizitë"
+  },
+  "stats": {
+    "floors": "Kate",
+    "apartments": "Apartamente",
+    "commercial": "Hapësira Komerciale",
+    "price": "Duke filluar nga €1,000/m²"
+  },
+  "about": {
+    "label": "Vizioni Ynë",
+    "quote": "Arkitektura është arti i si të humbasësh hapësirë.",
+    "quoteAuthor": "Philip Johnson",
+    "title": "Ku Arkitektura Takohet me",
+    "titleItalic": "Aspiratën",
+    "body": "Pranvera Tower ridefinon jetesën urbane në zemër të qytetit. Me 10 kate rezidencash të dizajnuara me kujdes dhe mbi 20 hapësira komerciale, ky projekt ofron një stil jete të pakrahasueshëm.",
+    "cta": "Zbulo Projektin"
+  },
+  "apartments": {
+    "label": "Rezidencат Tona",
+    "title": "Zgjidhni",
+    "titleItalic": "Suitën Tuaj",
+    "tabs": {
+      "1br": "1 Dhomë Gjumi",
+      "2br": "2 Dhoma Gjumi",
+      "3br": "3 Dhoma Gjumi",
+      "penthouse": "Penthouse",
+      "commercial": "Komerciale"
+    },
+    "from": "Nga",
+    "sqm": "m²",
+    "pricePer": "€/m²",
+    "floors": "Kate",
+    "inquire": "Kërko Informacion",
+    "1br": {
+      "title": "Një Dhomë Gjumi",
+      "description": "Rezidenca elegante me një dhomë gjumi të dizajnuara për profesionistët modernë.",
+      "size": "55–75",
+      "price": "1,000",
+      "floorRange": "2–8",
+      "features": ["Kuzhinë & ndenjëse e hapur", "Dhomë kryesore me banjë ensuite", "Ballkon privat", "Vend parkimi nëntokësor"]
+    },
+    "2br": {
+      "title": "Dy Dhoma Gjumi",
+      "description": "Rezidenca familjare me hapësira të gjera. Dy dhoma gjumi të plota, kuzhina moderne dhe pamje panoramike.",
+      "size": "85–110",
+      "price": "1,000",
+      "floorRange": "2–9",
+      "features": ["Ndenjëse e hapur e gjerë", "2 dhoma gjumi", "2 banja", "Ballkon privat", "Parking nëntokësor"]
+    },
+    "3br": {
+      "title": "Tre Dhoma Gjumi",
+      "description": "Apartamente premium familjare mbi 130 metra katrorë. Për ata që nuk bëjnë kompromis.",
+      "size": "130–160",
+      "price": "1,000",
+      "floorRange": "4–9",
+      "features": ["Ndenjëse & dhomë ngrënieje e gjerë", "3 dhoma gjumi", "2 banja + WC mysafir", "Ballkon i madh rrethor", "2 vende parkimi"]
+    },
+    "penthouse": {
+      "title": "Penthouse",
+      "description": "Kurora e Pranvera Tower. Rezidenca çatije me pamje 360° të qytetit dhe terrace private.",
+      "size": "200–280",
+      "price": "1,200",
+      "floorRange": "10",
+      "features": ["Terrace private çatije", "Xhamo nga dyshemeja deri në tavan", "Kuzhinë e personalizuar", "Pamje panoramike 360°", "2 vende parkimi nëntokësor", "Akses prioritar te concierge"]
+    },
+    "commercial": {
+      "title": "Hapësira Komerciale",
+      "description": "Njësi komerciale premium të disponueshme për qira. Trafik i lartë dhe paraqitje fleksibël.",
+      "size": "40–200",
+      "price": "Me kërkesë",
+      "floorRange": "P–1",
+      "features": ["Dritare rruge kryesore", "Lokacion me trafik të lartë", "Plan i hapur fleksibël", "Hyrje e dedikuar", "Akses ngarkimi i disponueshëm"]
+    }
+  },
+  "location": {
+    "label": "Vendndodhje Prime",
+    "title": "Pozicionuar në",
+    "titleItalic": "Zemër të Qytetit",
+    "advantages": [
+      { "icon": "🏙️", "text": "3 minuta nga qendra e qytetit" },
+      { "icon": "🏥", "text": "2 minuta nga spitali i urgjencës" },
+      { "icon": "🛣️", "text": "Akses i drejtpërdrejtë në rrugën kryesore" },
+      { "icon": "🅿️", "text": "Parking nëntokësor i disponueshëm" }
+    ]
+  },
+  "gallery": {
+    "label": "Tur Vizual",
+    "title": "Interierë me",
+    "titleItalic": "Dallim",
+    "viewAll": "Shiko Galerinë e Plotë"
+  },
+  "contact": {
+    "label": "Na Kontaktoni",
+    "title": "Filloni",
+    "titleItalic": "Udhëtimin Tuaj",
+    "address": "Zyra e Shitjes Pranvera Tower",
+    "phone": "+383 44 000 000",
+    "email": "info@pranveratower.com",
+    "form": {
+      "name": "Emri i Plotë",
+      "email": "Adresa Email",
+      "phone": "Numri i Telefonit",
+      "message": "Mesazhi",
+      "submit": "Dërgo Mesazhin",
+      "success": "Faleminderit. Do t'ju kontaktojmë së shpejti.",
+      "interest": "Jam i interesuar për",
+      "interests": ["1 Dhomë Gjumi", "2 Dhoma Gjumi", "3 Dhoma Gjumi", "Penthouse", "Hapësirë Komerciale", "Pyetje të Përgjithshme"]
+    }
+  },
+  "footer": {
+    "tagline": "Rezidenca Premium · Prishtinë",
+    "rights": "Të gjitha të drejtat e rezervuara."
+  },
+  "inquiry": {
+    "title": "Kërko Informacion",
+    "subtitle": "Ekipi ynë do t'ju kontaktojë brenda 24 orësh.",
+    "close": "Mbyll"
+  }
+}

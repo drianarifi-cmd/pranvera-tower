@@ -1,0 +1,135 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "apartments": "Apartments",
+    "gallery": "Gallery",
+    "location": "Location",
+    "contact": "Contact",
+    "book": "Book a Visit"
+  },
+  "hero": {
+    "label": "Luxury Residences",
+    "title": "Pranvera",
+    "titleItalic": "Tower",
+    "subtitle": "Where architecture meets aspiration. 10 floors of premium residences above the city.",
+    "cta1": "Explore Apartments",
+    "cta2": "Book a Visit"
+  },
+  "stats": {
+    "floors": "Floors",
+    "apartments": "Apartments",
+    "commercial": "Commercial Spaces",
+    "price": "Starting from €1,000/m²"
+  },
+  "about": {
+    "label": "Our Vision",
+    "quote": "Architecture is the art of how to waste space.",
+    "quoteAuthor": "Philip Johnson",
+    "title": "Where Architecture Meets",
+    "titleItalic": "Aspiration",
+    "body": "Pranvera Tower redefines urban living in the heart of the city. With 10 floors of meticulously designed residences and over 20 ground-floor commercial spaces, this landmark development offers an unparalleled lifestyle.",
+    "cta": "Discover the Project"
+  },
+  "apartments": {
+    "label": "Our Residences",
+    "title": "Choose Your",
+    "titleItalic": "Suite",
+    "tabs": {
+      "1br": "1 Bedroom",
+      "2br": "2 Bedroom",
+      "3br": "3 Bedroom",
+      "penthouse": "Penthouse",
+      "commercial": "Commercial"
+    },
+    "from": "From",
+    "sqm": "m²",
+    "pricePer": "€/m²",
+    "floors": "Floors",
+    "inquire": "Request Information",
+    "1br": {
+      "title": "One Bedroom",
+      "description": "Elegant single-bedroom residences designed for modern professionals. Floor-to-ceiling windows, premium finishes, and open-plan living spaces.",
+      "size": "55–75",
+      "price": "1,000",
+      "floorRange": "2–8",
+      "features": ["Open-plan kitchen & living", "Master bedroom with ensuite", "Private balcony", "Underground parking space"]
+    },
+    "2br": {
+      "title": "Two Bedroom",
+      "description": "Spacious family residences with generous living areas. Two full bedrooms, modern kitchens, and panoramic city views from upper floors.",
+      "size": "85–110",
+      "price": "1,000",
+      "floorRange": "2–9",
+      "features": ["Generous open living area", "2 full bedrooms", "2 bathrooms", "Private balcony", "Underground parking"]
+    },
+    "3br": {
+      "title": "Three Bedroom",
+      "description": "Premium family apartments spanning over 130 square meters. Designed for those who refuse to compromise on space, comfort, or elegance.",
+      "size": "130–160",
+      "price": "1,000",
+      "floorRange": "4–9",
+      "features": ["Expansive living & dining", "3 bedrooms", "2 bathrooms + guest WC", "Large wrap balcony", "2 parking spaces"]
+    },
+    "penthouse": {
+      "title": "Penthouse",
+      "description": "The crown jewel of Pranvera Tower. Sprawling rooftop residences with 360° city views, private terraces, and bespoke interior finishes.",
+      "size": "200–280",
+      "price": "1,200",
+      "floorRange": "10",
+      "features": ["Private rooftop terrace", "Floor-to-ceiling glazing", "Bespoke kitchen", "360° panoramic views", "2 underground parking spaces", "Priority concierge access"]
+    },
+    "commercial": {
+      "title": "Commercial Spaces",
+      "description": "Premium ground-floor and first-floor commercial units available for lease. High footfall, main road frontage, and flexible layouts for retail or office use.",
+      "size": "40–200",
+      "price": "Available on request",
+      "floorRange": "G–1",
+      "features": ["Main road frontage", "High-footfall location", "Flexible open plan", "Dedicated entrance", "Loading access available"]
+    }
+  },
+  "location": {
+    "label": "Prime Location",
+    "title": "Positioned at the",
+    "titleItalic": "Heart of the City",
+    "advantages": [
+      { "icon": "🏙️", "text": "3 minutes from city center" },
+      { "icon": "🏥", "text": "2 minutes from emergency hospital" },
+      { "icon": "🛣️", "text": "Direct main road access" },
+      { "icon": "🅿️", "text": "Underground parking available" }
+    ]
+  },
+  "gallery": {
+    "label": "Visual Tour",
+    "title": "Interiors of",
+    "titleItalic": "Distinction",
+    "viewAll": "View Full Gallery"
+  },
+  "contact": {
+    "label": "Get In Touch",
+    "title": "Begin Your",
+    "titleItalic": "Journey",
+    "address": "Pranvera Tower Sales Office",
+    "phone": "+383 44 000 000",
+    "email": "info@pranveratower.com",
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "message": "Message",
+      "submit": "Send Message",
+      "success": "Thank you. We will be in touch shortly.",
+      "interest": "I'm interested in",
+      "interests": ["1 Bedroom", "2 Bedroom", "3 Bedroom", "Penthouse", "Commercial Space", "General Inquiry"]
+    }
+  },
+  "footer": {
+    "tagline": "Premium Residences · Pristina",
+    "rights": "All rights reserved."
+  },
+  "inquiry": {
+    "title": "Request Information",
+    "subtitle": "Our team will contact you within 24 hours.",
+    "close": "Close"
+  }
+}
