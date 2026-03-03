@@ -3,6 +3,7 @@ import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import '../globals.css';
 import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
 
 const locales = ['en', 'sq'];
 
@@ -23,6 +24,7 @@ export default async function LocaleLayout({
     <NextIntlClientProvider messages={messages}>
       <Navbar locale={locale} />
       {children}
+      <Footer locale={locale} />
     </NextIntlClientProvider>
   );
 }
