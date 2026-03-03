@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 
@@ -17,27 +17,44 @@ export default function InquiryDrawer({ isOpen, onClose, apartmentType }: Inquir
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  // Fix 3: Escape key handler
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [isOpen, onClose]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  // Fix 1 & 4: catch block, error state, removed 'YOUR_FORM_ID' fallback
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
+    setError(null);
     try {
       const res = await fetch(
-        `https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID || 'YOUR_FORM_ID'}`,
+        `https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID || ''}`,
         {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify({ ...form, apartment_type: apartmentType }),
+          body: new FormData(e.currentTarget),
+          headers: { Accept: 'application/json' },
         }
       );
       if (res.ok) {
         setSuccess(true);
         setForm({ name: '', email: '', phone: '', message: '' });
+      } else {
+        setError('Something went wrong. Please try again.');
       }
+    } catch {
+      setError('Network error. Please check your connection and try again.');
     } finally {
       setSubmitting(false);
     }
@@ -90,9 +107,12 @@ export default function InquiryDrawer({ isOpen, onClose, apartmentType }: Inquir
             }}
           />
 
-          {/* Drawer panel */}
+          {/* Fix 3: Drawer panel with role, aria-modal, aria-label */}
           <motion.div
             key="drawer"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Inquiry form"
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
@@ -193,7 +213,10 @@ export default function InquiryDrawer({ isOpen, onClose, apartmentType }: Inquir
             {/* Body */}
             <div style={{ padding: '2rem', flex: 1 }}>
               {success ? (
+                // Fix 6: aria-live region for success message
                 <motion.div
+                  role="status"
+                  aria-live="polite"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   style={{ textAlign: 'center', padding: '4rem 0' }}
@@ -238,9 +261,11 @@ export default function InquiryDrawer({ isOpen, onClose, apartmentType }: Inquir
                   {/* Hidden apartment type */}
                   <input type="hidden" name="apartment_type" value={apartmentType} />
 
+                  {/* Fix 2: htmlFor + id for name */}
                   <div>
-                    <label style={labelStyle}>{ct('form.name')}</label>
+                    <label htmlFor="inquiry-name" style={labelStyle}>{ct('form.name')}</label>
                     <input
+                      id="inquiry-name"
                       type="text"
                       name="name"
                       value={form.name}
@@ -252,9 +277,11 @@ export default function InquiryDrawer({ isOpen, onClose, apartmentType }: Inquir
                     />
                   </div>
 
+                  {/* Fix 2: htmlFor + id for email */}
                   <div>
-                    <label style={labelStyle}>{ct('form.email')}</label>
+                    <label htmlFor="inquiry-email" style={labelStyle}>{ct('form.email')}</label>
                     <input
+                      id="inquiry-email"
                       type="email"
                       name="email"
                       value={form.email}
@@ -266,9 +293,11 @@ export default function InquiryDrawer({ isOpen, onClose, apartmentType }: Inquir
                     />
                   </div>
 
+                  {/* Fix 2: htmlFor + id for phone */}
                   <div>
-                    <label style={labelStyle}>{ct('form.phone')}</label>
+                    <label htmlFor="inquiry-phone" style={labelStyle}>{ct('form.phone')}</label>
                     <input
+                      id="inquiry-phone"
                       type="tel"
                       name="phone"
                       value={form.phone}
@@ -279,9 +308,11 @@ export default function InquiryDrawer({ isOpen, onClose, apartmentType }: Inquir
                     />
                   </div>
 
+                  {/* Fix 2: htmlFor + id for message */}
                   <div>
-                    <label style={labelStyle}>{ct('form.message')}</label>
+                    <label htmlFor="inquiry-message" style={labelStyle}>{ct('form.message')}</label>
                     <textarea
+                      id="inquiry-message"
                       name="message"
                       value={form.message}
                       onChange={handleChange}
@@ -292,10 +323,12 @@ export default function InquiryDrawer({ isOpen, onClose, apartmentType }: Inquir
                     />
                   </div>
 
+                  {/* Fix 5: aria-busy on submit button */}
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="btn-primary"
+                    aria-busy={submitting}
+                    className="btn-primary w-full justify-center"
                     style={{
                       fontSize: '10px',
                       padding: '1rem 2rem',
@@ -308,6 +341,23 @@ export default function InquiryDrawer({ isOpen, onClose, apartmentType }: Inquir
                   >
                     {submitting ? '...' : ct('form.submit')}
                   </button>
+
+                  {/* Fix 1: display error message */}
+                  {error !== null && (
+                    <p
+                      role="alert"
+                      style={{
+                        fontFamily: "'Jost', sans-serif",
+                        fontSize: '0.8125rem',
+                        fontWeight: 300,
+                        color: '#e07070',
+                        margin: 0,
+                        textAlign: 'center',
+                      }}
+                    >
+                      {error}
+                    </p>
+                  )}
                 </form>
               )}
             </div>

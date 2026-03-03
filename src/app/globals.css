@@ -50,6 +50,11 @@ body::before {
 ::-webkit-scrollbar-track { background: #07111f; }
 ::-webkit-scrollbar-thumb { background: #c8a96e; }
 
+/* Hide scrollbar on tab bar for Chrome/Safari */
+.tab-bar::-webkit-scrollbar {
+  display: none;
+}
+
 @layer components {
   .section-label {
     font-family: 'Jost', sans-serif;

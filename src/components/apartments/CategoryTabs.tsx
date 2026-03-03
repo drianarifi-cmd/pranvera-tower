@@ -20,7 +20,8 @@ export default function CategoryTabs() {
     setActiveImage(0);
   };
 
-  const features = t.raw(`${activeTab}.features` as any) as string[];
+  const rawFeatures = t.raw(`${activeTab}.features` as any);
+  const features: string[] = Array.isArray(rawFeatures) ? rawFeatures : [];
 
   const isCommercial = activeTab === 'commercial';
   const price = t(`${activeTab}.price` as any);
@@ -29,6 +30,7 @@ export default function CategoryTabs() {
     <>
       {/* Tab bar */}
       <div
+        className="tab-bar"
         style={{
           display: 'flex',
           gap: 0,
