@@ -32,7 +32,7 @@ export async function generateMetadata({
     },
     openGraph: {
       title: 'Pranvera Tower',
-      description: 'Premium Residences · Pristina',
+      description: 'Premium Residences · Podujevo',
       url: 'https://drianarifi.online',
       siteName: 'Pranvera Tower',
       images: [
