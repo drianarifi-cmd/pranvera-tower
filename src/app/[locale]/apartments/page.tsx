@@ -9,45 +9,26 @@ export default async function ApartmentsPage({
 }) {
   const { locale } = await params;
   void locale; // locale is used by next-intl middleware context
-
   const t = await getTranslations('apartments');
 
   return (
-    <main style={{ backgroundColor: '#07111f', minHeight: '100vh' }}>
-      {/* Page hero */}
-      <section
-        style={{
-          paddingTop: '10rem',
-          paddingBottom: '5rem',
-          borderBottom: '1px solid rgba(200,169,110,0.1)',
-          background: 'linear-gradient(to bottom, #0d1e33, #07111f)',
-        }}
-      >
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 4rem' }}>
+    <main className="bg-navy min-h-screen">
+      {/* Hero */}
+      <section className="pt-28 pb-12 md:pt-40 md:pb-20 border-b border-gold/10" style={{ background: 'linear-gradient(to bottom, #0d1e33, #07111f)' }}>
+        <div className="max-w-6xl mx-auto px-4 md:px-16">
           <AnimatedSection>
-            <p className="section-label" style={{ marginBottom: '1rem' }}>
-              {t('label')}
-            </p>
-            <h1
-              style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontSize: 'clamp(3rem, 6vw, 5rem)',
-                fontWeight: 300,
-                color: '#f9f4ec',
-                lineHeight: 1.1,
-                margin: 0,
-              }}
-            >
+            <p className="section-label mb-4">{t('label')}</p>
+            <h1 className="font-serif font-light text-cream leading-tight" style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}>
               {t('title')}{' '}
-              <em style={{ fontStyle: 'italic', color: '#c8a96e' }}>{t('titleItalic')}</em>
+              <em className="italic text-gold">{t('titleItalic')}</em>
             </h1>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* Tabs + content */}
-      <section style={{ padding: '5rem 0 8rem' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 4rem' }}>
+      {/* Tabs */}
+      <section className="py-10 md:py-20">
+        <div className="max-w-6xl mx-auto px-0 md:px-16">
           <CategoryTabs />
         </div>
       </section>

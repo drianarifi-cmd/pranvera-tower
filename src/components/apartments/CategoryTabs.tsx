@@ -14,74 +14,33 @@ export default function CategoryTabs() {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const images = APARTMENT_IMAGES[activeTab];
+  const rawFeatures = t.raw(`${activeTab}.features` as any);
+  const features: string[] = Array.isArray(rawFeatures) ? rawFeatures : [];
+  const isCommercial = activeTab === 'commercial';
+  const price = t(`${activeTab}.price` as any);
 
   const handleTabChange = (tab: TabKey) => {
     setActiveTab(tab);
     setActiveImage(0);
   };
 
-  const rawFeatures = t.raw(`${activeTab}.features` as any);
-  const features: string[] = Array.isArray(rawFeatures) ? rawFeatures : [];
-
-  const isCommercial = activeTab === 'commercial';
-  const price = t(`${activeTab}.price` as any);
-
   return (
     <>
-      {/* Tab bar */}
-      <div
-        className="tab-bar"
-        style={{
-          display: 'flex',
-          gap: 0,
-          borderBottom: '1px solid rgba(200,169,110,0.15)',
-          overflowX: 'auto',
-          scrollbarWidth: 'none',
-        }}
-      >
+      {/* Tab bar — scrollable, fills width on mobile */}
+      <div className="tab-bar flex overflow-x-auto border-b border-gold/15" style={{ scrollbarWidth: 'none' }}>
         {TABS.map((tab) => (
           <button
             key={tab}
             onClick={() => handleTabChange(tab)}
-            style={{
-              position: 'relative',
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              padding: '1rem 1.5rem',
-              fontFamily: "'Jost', sans-serif",
-              fontSize: '11px',
-              fontWeight: 300,
-              textTransform: 'uppercase',
-              letterSpacing: '0.2em',
-              color: activeTab === tab ? '#c8a96e' : 'rgba(249,244,236,0.5)',
-              transition: 'color 0.2s',
-              whiteSpace: 'nowrap',
-              flexShrink: 0,
-            }}
-            onMouseEnter={(e) => {
-              if (activeTab !== tab) {
-                (e.currentTarget as HTMLButtonElement).style.color = 'rgba(249,244,236,0.8)';
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (activeTab !== tab) {
-                (e.currentTarget as HTMLButtonElement).style.color = 'rgba(249,244,236,0.5)';
-              }
-            }}
+            className={`relative flex-1 md:flex-none px-4 md:px-6 py-4 font-sans text-[10px] md:text-[11px] uppercase tracking-[0.15em] md:tracking-[0.2em] font-light whitespace-nowrap transition-colors duration-200 ${
+              activeTab === tab ? 'text-gold' : 'text-cream/50 hover:text-cream/80'
+            }`}
           >
             {t(`tabs.${tab}` as any)}
             {activeTab === tab && (
               <motion.div
                 layoutId="tab-underline"
-                style={{
-                  position: 'absolute',
-                  bottom: -1,
-                  left: 0,
-                  right: 0,
-                  height: '1px',
-                  backgroundColor: '#c8a96e',
-                }}
+                className="absolute bottom-[-1px] left-0 right-0 h-px bg-gold"
                 transition={{ type: 'spring', stiffness: 400, damping: 30 }}
               />
             )}
@@ -97,25 +56,11 @@ export default function CategoryTabs() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.35, ease: 'easeOut' }}
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '4rem',
-            paddingTop: '3rem',
-          }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-16 pt-8 md:pt-12"
         >
-          {/* Left: Image carousel */}
+          {/* Image carousel */}
           <div>
-            {/* Main image */}
-            <div
-              style={{
-                position: 'relative',
-                width: '100%',
-                aspectRatio: '4/3',
-                overflow: 'hidden',
-                backgroundColor: '#0d1e33',
-              }}
-            >
+            <div className="relative w-full overflow-hidden bg-navy-mid" style={{ aspectRatio: '4/3' }}>
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`${activeTab}-${activeImage}`}
@@ -123,48 +68,26 @@ export default function CategoryTabs() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.4 }}
-                  style={{ position: 'absolute', inset: 0 }}
+                  className="absolute inset-0"
                 >
                   <Image
                     src={images[activeImage]}
                     alt={t(`${activeTab}.title` as any)}
                     fill
-                    style={{ objectFit: 'cover' }}
+                    className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
-                  <div
-                    style={{
-                      position: 'absolute',
-                      inset: 0,
-                      background: 'linear-gradient(to top, rgba(7,17,31,0.4) 0%, transparent 60%)',
-                    }}
-                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent" />
                 </motion.div>
               </AnimatePresence>
 
-              {/* Prev / Next arrows */}
+              {/* Arrows */}
               {images.length > 1 && (
                 <>
                   <button
                     onClick={() => setActiveImage((i) => (i - 1 + images.length) % images.length)}
                     aria-label="Previous image"
-                    style={{
-                      position: 'absolute',
-                      left: '1rem',
-                      top: '50%',
-                      transform: 'translateY(-50%)',
-                      background: 'rgba(7,17,31,0.6)',
-                      border: '1px solid rgba(200,169,110,0.3)',
-                      color: '#c8a96e',
-                      cursor: 'pointer',
-                      width: '2.5rem',
-                      height: '2.5rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      zIndex: 2,
-                      transition: 'all 0.2s',
-                    }}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center bg-navy/60 border border-gold/30 text-gold transition-colors hover:bg-navy/80"
                   >
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                       <path d="M9 2L4 7L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -173,23 +96,7 @@ export default function CategoryTabs() {
                   <button
                     onClick={() => setActiveImage((i) => (i + 1) % images.length)}
                     aria-label="Next image"
-                    style={{
-                      position: 'absolute',
-                      right: '1rem',
-                      top: '50%',
-                      transform: 'translateY(-50%)',
-                      background: 'rgba(7,17,31,0.6)',
-                      border: '1px solid rgba(200,169,110,0.3)',
-                      color: '#c8a96e',
-                      cursor: 'pointer',
-                      width: '2.5rem',
-                      height: '2.5rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      zIndex: 2,
-                      transition: 'all 0.2s',
-                    }}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center bg-navy/60 border border-gold/30 text-gold transition-colors hover:bg-navy/80"
                   >
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                       <path d="M5 2L10 7L5 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -199,220 +106,75 @@ export default function CategoryTabs() {
               )}
             </div>
 
-            {/* Thumbnail dots / bars */}
+            {/* Thumbnail bars */}
             {images.length > 1 && (
-              <div style={{ display: 'flex', gap: '0.5rem', marginTop: '1rem', alignItems: 'center' }}>
-                {images.map((src, i) => (
+              <div className="flex gap-2 mt-3">
+                {images.map((_, i) => (
                   <button
                     key={i}
                     onClick={() => setActiveImage(i)}
                     aria-label={`Image ${i + 1}`}
-                    style={{
-                      background: 'none',
-                      border: 'none',
-                      padding: 0,
-                      cursor: 'pointer',
-                      flex: 1,
-                      height: '3px',
-                      backgroundColor: i === activeImage ? '#c8a96e' : 'rgba(200,169,110,0.25)',
-                      transition: 'background-color 0.2s',
-                    }}
+                    className="flex-1 h-[3px] transition-colors duration-200"
+                    style={{ backgroundColor: i === activeImage ? '#c8a96e' : 'rgba(200,169,110,0.25)' }}
                   />
                 ))}
               </div>
             )}
           </div>
 
-          {/* Right: Details */}
-          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '1.5rem' }}>
-            {/* Label + Title */}
+          {/* Details */}
+          <div className="flex flex-col justify-center gap-5 p-6 md:p-0 bg-navy-mid md:bg-transparent">
             <div>
-              <p className="section-label" style={{ marginBottom: '0.75rem' }}>
-                {t(`tabs.${activeTab}` as any)}
-              </p>
-              <h2
-                style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: '2.5rem',
-                  fontWeight: 300,
-                  color: '#f9f4ec',
-                  lineHeight: 1.15,
-                  margin: 0,
-                }}
-              >
+              <p className="section-label mb-2">{t(`tabs.${activeTab}` as any)}</p>
+              <h2 className="font-serif text-3xl md:text-4xl font-light text-cream leading-tight">
                 {t(`${activeTab}.title` as any)}
               </h2>
             </div>
 
-            {/* Gold divider */}
-            <div style={{ width: '3rem', height: '1px', backgroundColor: '#c8a96e' }} />
+            <div className="w-10 h-px bg-gold" />
 
-            {/* Description */}
-            <p
-              style={{
-                fontFamily: "'Jost', sans-serif",
-                fontSize: '0.875rem',
-                fontWeight: 300,
-                color: 'rgba(249,244,236,0.7)',
-                lineHeight: 1.75,
-                margin: 0,
-              }}
-            >
+            <p className="font-sans text-sm font-light text-cream/70 leading-relaxed">
               {t(`${activeTab}.description` as any)}
             </p>
 
-            {/* Specs grid */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem' }}>
-              <div
-                style={{
-                  padding: '1rem',
-                  border: '1px solid rgba(200,169,110,0.15)',
-                  textAlign: 'center',
-                }}
-              >
-                <p
-                  style={{
-                    fontFamily: "'Cormorant Garamond', serif",
-                    fontSize: '1.5rem',
-                    fontWeight: 300,
-                    color: '#c8a96e',
-                    margin: 0,
-                  }}
-                >
-                  {t(`${activeTab}.size` as any)}
-                </p>
-                <p
-                  style={{
-                    fontFamily: "'Jost', sans-serif",
-                    fontSize: '9px',
-                    fontWeight: 300,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.15em',
-                    color: '#8fa3b8',
-                    marginTop: '0.25rem',
-                  }}
-                >
-                  {t('sqm')}
-                </p>
-              </div>
-
-              <div
-                style={{
-                  padding: '1rem',
-                  border: '1px solid rgba(200,169,110,0.15)',
-                  textAlign: 'center',
-                }}
-              >
-                <p
-                  style={{
-                    fontFamily: "'Cormorant Garamond', serif",
-                    fontSize: isCommercial ? '1rem' : '1.5rem',
-                    fontWeight: 300,
-                    color: '#c8a96e',
-                    margin: 0,
-                    lineHeight: 1.2,
-                  }}
-                >
-                  {isCommercial ? price : `€${price}`}
-                </p>
-                {!isCommercial && (
-                  <p
-                    style={{
-                      fontFamily: "'Jost', sans-serif",
-                      fontSize: '9px',
-                      fontWeight: 300,
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.15em',
-                      color: '#8fa3b8',
-                      marginTop: '0.25rem',
-                    }}
-                  >
-                    {t('pricePer')}
-                  </p>
-                )}
-              </div>
-
-              <div
-                style={{
-                  padding: '1rem',
-                  border: '1px solid rgba(200,169,110,0.15)',
-                  textAlign: 'center',
-                }}
-              >
-                <p
-                  style={{
-                    fontFamily: "'Cormorant Garamond', serif",
-                    fontSize: '1.5rem',
-                    fontWeight: 300,
-                    color: '#c8a96e',
-                    margin: 0,
-                  }}
-                >
-                  {t(`${activeTab}.floorRange` as any)}
-                </p>
-                <p
-                  style={{
-                    fontFamily: "'Jost', sans-serif",
-                    fontSize: '9px',
-                    fontWeight: 300,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.15em',
-                    color: '#8fa3b8',
-                    marginTop: '0.25rem',
-                  }}
-                >
-                  {t('floors')}
-                </p>
-              </div>
+            {/* Specs */}
+            <div className="grid grid-cols-3 gap-2 md:gap-4">
+              {[
+                { value: t(`${activeTab}.size` as any), label: t('sqm') },
+                { value: isCommercial ? price : `€${price}`, label: isCommercial ? '' : t('pricePer') },
+                { value: t(`${activeTab}.floorRange` as any), label: t('floors') },
+              ].map((spec, i) => (
+                <div key={i} className="border border-gold/15 p-3 md:p-4 text-center">
+                  <p className="font-serif text-xl md:text-2xl font-light text-gold leading-tight">{spec.value}</p>
+                  {spec.label && <p className="section-label text-muted mt-1 text-[8px] md:text-[9px]">{spec.label}</p>}
+                </div>
+              ))}
             </div>
 
-            {/* Features list */}
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            {/* Features */}
+            <ul className="space-y-2">
               {features.map((feat: string, i: number) => (
-                <li
-                  key={i}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.75rem',
-                    fontFamily: "'Jost', sans-serif",
-                    fontSize: '0.8125rem',
-                    fontWeight: 300,
-                    color: 'rgba(249,244,236,0.75)',
-                  }}
-                >
-                  <span
-                    style={{
-                      width: '4px',
-                      height: '4px',
-                      borderRadius: '50%',
-                      backgroundColor: '#c8a96e',
-                      flexShrink: 0,
-                    }}
-                  />
+                <li key={i} className="flex items-center gap-3 font-sans text-xs font-light text-cream/75">
+                  <span className="w-1 h-1 rounded-full bg-gold flex-shrink-0" />
                   {feat}
                 </li>
               ))}
             </ul>
 
             {/* Inquiry button */}
-            <div>
-              <button
-                onClick={() => setDrawerOpen(true)}
-                className="btn-primary"
-                style={{ fontSize: '10px' }}
-              >
-                {t('inquire')}
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ marginLeft: '0.25rem' }}>
-                  <path d="M2 7H12M8 3L12 7L8 11" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </button>
-            </div>
+            <button
+              onClick={() => setDrawerOpen(true)}
+              className="btn-primary w-full md:w-auto justify-center"
+            >
+              {t('inquire')}
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="ml-1">
+                <path d="M2 7H12M8 3L12 7L8 11" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
           </div>
         </motion.div>
       </AnimatePresence>
 
-      {/* Inquiry drawer */}
       <InquiryDrawer
         isOpen={drawerOpen}
         onClose={() => setDrawerOpen(false)}
