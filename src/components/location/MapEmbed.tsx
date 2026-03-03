@@ -1,6 +1,6 @@
 export default function MapEmbed() {
   const MAPS_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY;
-  const query = '42.896558,21.1950205';
+  const query = 'Mobileria+Burimi+Podujeve+Kosovo';
 
   if (!MAPS_KEY) {
     return (
@@ -19,7 +19,7 @@ export default function MapEmbed() {
         loading="lazy"
         allowFullScreen
         referrerPolicy="no-referrer-when-downgrade"
-        src={`https://www.google.com/maps/embed/v1/search?key=${MAPS_KEY}&q=${query}&zoom=17`}
+        src={`https://www.google.com/maps/embed/v1/place?key=${MAPS_KEY}&q=${query}&zoom=17`}
         title="Pranvera Tower location map"
       />
     </div>
