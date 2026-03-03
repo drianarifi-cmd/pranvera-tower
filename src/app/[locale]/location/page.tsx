@@ -11,7 +11,8 @@ export default async function LocationPage({ params }: { params: Promise<{ local
   const { locale: _locale } = await params;
   const t = await getTranslations('location');
 
-  const advantages = t.raw('advantages') as Advantage[];
+  const rawAdvantages = t.raw('advantages');
+  const advantages: Advantage[] = Array.isArray(rawAdvantages) ? rawAdvantages : [];
 
   return (
     <main className="pt-24 pb-24">

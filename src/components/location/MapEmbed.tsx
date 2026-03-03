@@ -2,6 +2,14 @@ export default function MapEmbed() {
   const MAPS_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY;
   const query = 'Pranvera+Tower+Pristina+Kosovo';
 
+  if (!MAPS_KEY) {
+    return (
+      <div className="w-full h-[500px] bg-navy-mid flex items-center justify-center">
+        <p className="section-label text-muted">Map unavailable</p>
+      </div>
+    );
+  }
+
   return (
     <div className="w-full h-[500px] relative">
       <iframe
