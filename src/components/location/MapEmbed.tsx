@@ -1,6 +1,6 @@
 export default function MapEmbed() {
   const MAPS_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY;
-  const query = '387+Zahir+Pajaziti+Podujeve+11000+Kosovo';
+  const query = '42.896558,21.1950205';
 
   if (!MAPS_KEY) {
     return (
