@@ -1,6 +1,6 @@
 export default function MapEmbed() {
   const MAPS_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY;
-  const query = 'Mobileria+Burimi+Podujeve+Kosovo';
+  const query = '8+Nazim+Gafurri+Besiane+11000+Kosovo';
 
   if (!MAPS_KEY) {
     return (
