@@ -49,7 +49,7 @@ export default function CategoryTabs() {
       </div>
 
       {/* Content */}
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={activeTab}
           initial={{ opacity: 0, y: 16 }}
@@ -61,7 +61,7 @@ export default function CategoryTabs() {
           {/* Image carousel */}
           <div>
             <div className="relative w-full overflow-hidden bg-navy-mid" style={{ aspectRatio: '4/3' }}>
-              <AnimatePresence mode="wait">
+              <AnimatePresence mode="wait" initial={false}>
                 <motion.div
                   key={`${activeTab}-${activeImage}`}
                   initial={{ opacity: 0 }}
