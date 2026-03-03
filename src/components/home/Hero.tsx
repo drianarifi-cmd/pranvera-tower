@@ -34,17 +34,19 @@ export default function Hero({ locale }: { locale: string }) {
       </motion.div>
 
       {/* Content */}
-      <div style={{
-        position: 'relative',
-        zIndex: 10,
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'flex-end',
-        height: '100%',
-        maxWidth: '1200px',
-        margin: '0 auto',
-        padding: '0 4rem 6rem',
-      }}>
+      <div
+        className="px-6 pb-16 md:px-16 md:pb-24"
+        style={{
+          position: 'relative',
+          zIndex: 10,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-end',
+          height: '100%',
+          maxWidth: '1200px',
+          margin: '0 auto',
+        }}
+      >
         {/* Label */}
         <motion.p
           className="section-label"
@@ -149,15 +151,7 @@ export default function Hero({ locale }: { locale: string }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
-        style={{
-          position: 'absolute',
-          bottom: '2rem',
-          right: '4rem',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '0.5rem',
-        }}
+        className="absolute bottom-8 right-6 md:right-16 flex flex-col items-center gap-2"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}

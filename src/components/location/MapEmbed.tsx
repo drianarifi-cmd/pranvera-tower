@@ -4,14 +4,14 @@ export default function MapEmbed() {
 
   if (!MAPS_KEY) {
     return (
-      <div className="w-full h-[500px] bg-navy-mid flex items-center justify-center">
+      <div className="w-full h-[280px] md:h-[500px] bg-navy-mid flex items-center justify-center">
         <p className="section-label text-muted">Map unavailable</p>
       </div>
     );
   }
 
   return (
-    <div className="w-full h-[500px] relative">
+    <div className="w-full h-[280px] md:h-[500px] relative">
       <iframe
         width="100%"
         height="100%"

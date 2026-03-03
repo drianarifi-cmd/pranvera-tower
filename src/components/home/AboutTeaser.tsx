@@ -6,8 +6,8 @@ export default function AboutTeaser({ locale }: { locale: string }) {
   const t = useTranslations('about');
 
   return (
-    <section style={{ padding: '7rem 4rem' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
+    <section className="px-6 py-16 md:px-16 md:py-28">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
         <AnimatedSection>
           <p className="section-label" style={{ marginBottom: '1.5rem' }}>{t('label')}</p>
           <blockquote style={{

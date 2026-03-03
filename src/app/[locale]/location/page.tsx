@@ -35,7 +35,7 @@ export default async function LocationPage({ params }: { params: Promise<{ local
           {advantages.map((advantage, index) => (
             <div
               key={index}
-              className="border border-gold/20 p-8 text-center hover:border-gold/60 transition-colors duration-300"
+              className="border border-gold/20 p-4 md:p-8 text-center hover:border-gold/60 transition-colors duration-300"
             >
               <div className="text-4xl mb-4">{advantage.icon}</div>
               <p className="font-sans text-xs">{advantage.text}</p>

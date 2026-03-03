@@ -14,8 +14,8 @@ export default function GalleryTeaser({ locale }: { locale: string }) {
   const t = useTranslations('gallery');
 
   return (
-    <section style={{ padding: '7rem 4rem', backgroundColor: '#0d1e33' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+    <section className="px-6 py-16 md:px-16 md:py-28" style={{ backgroundColor: '#0d1e33' }}>
+      <div className="max-w-6xl mx-auto">
         <div style={{ marginBottom: '3rem' }}>
           <AnimatedSection>
             <p className="section-label" style={{ marginBottom: '1rem' }}>{t('label')}</p>
@@ -25,7 +25,14 @@ export default function GalleryTeaser({ locale }: { locale: string }) {
           </AnimatedSection>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '7fr 5fr', gap: '0.75rem', height: '480px' }}>
+        {/* Mobile: single hero image */}
+        <div className="block md:hidden relative w-full h-64 overflow-hidden">
+          <Image src={GALLERY_IMAGES[0]} alt="Gallery" fill className="object-cover" />
+          <div className="absolute inset-0 bg-navy/20" />
+        </div>
+
+        {/* Desktop: asymmetric grid */}
+        <div className="hidden md:grid gap-3" style={{ gridTemplateColumns: '7fr 5fr', height: '480px' }}>
           <div style={{ position: 'relative', overflow: 'hidden' }}>
             <Image
               src={GALLERY_IMAGES[0]}

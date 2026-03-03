@@ -93,7 +93,7 @@ export default function Navbar({ locale }: { locale: string }) {
 
         {/* Hamburger mobile */}
         <button
-          className="md:hidden flex flex-col gap-1.5 p-1 cursor-pointer"
+          className="md:hidden flex flex-col gap-1.5 p-2 cursor-pointer"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Menu"
         >
@@ -144,7 +144,7 @@ export default function Navbar({ locale }: { locale: string }) {
                   <Link
                     href={localePath(key)}
                     onClick={() => setMenuOpen(false)}
-                    className="text-sm font-light uppercase transition-colors"
+                    className="text-sm font-light uppercase transition-colors py-2 block"
                     style={{ fontFamily: "'Jost', sans-serif", letterSpacing: '0.2em', color: '#f9f4ec' }}
                   >
                     {t(key)}

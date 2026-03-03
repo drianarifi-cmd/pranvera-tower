@@ -21,7 +21,7 @@ export default function ApartmentPreview({ locale }: { locale: string }) {
 
   return (
     <section style={{ padding: '7rem 0', backgroundColor: '#0d1e33' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 4rem' }}>
+      <div className="px-6 md:px-16" style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <div style={{ marginBottom: '4rem' }}>
           <AnimatedSection>
             <p className="section-label" style={{ marginBottom: '1rem' }}>{t('label')}</p>

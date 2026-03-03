@@ -11,17 +11,20 @@ export default function StatsBar() {
   ];
 
   return (
-    <section style={{ backgroundColor: '#0d1e33', borderTop: '1px solid rgba(200,169,110,0.1)', borderBottom: '1px solid rgba(200,169,110,0.1)', padding: '3rem 4rem' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '2rem', alignItems: 'center' }}>
+    <section
+      className="px-6 py-10 md:px-16 md:py-16"
+      style={{ backgroundColor: '#0d1e33', borderTop: '1px solid rgba(200,169,110,0.1)', borderBottom: '1px solid rgba(200,169,110,0.1)' }}
+    >
+      <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 items-center">
         {stats.map((stat) => (
-          <div key={stat.label} style={{ textAlign: 'center' }}>
-            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '3rem', fontWeight: 300, color: '#c8a96e' }}>
+          <div key={stat.label} className="text-center">
+            <p className="font-serif text-4xl md:text-5xl text-gold font-light">
               <AnimatedCounter end={stat.value} suffix={stat.suffix} />
             </p>
-            <p className="section-label" style={{ color: '#8fa3b8', marginTop: '0.25rem' }}>{stat.label}</p>
+            <p className="section-label text-muted mt-2">{stat.label}</p>
           </div>
         ))}
-        <div style={{ textAlign: 'center' }}>
+        <div className="text-center">
           <p style={{ fontFamily: "'Jost', sans-serif", fontSize: '0.75rem', fontWeight: 300, color: 'rgba(249,244,236,0.6)', textTransform: 'uppercase', letterSpacing: '0.1em', lineHeight: 1.6 }}>
             {t('price')}
           </p>

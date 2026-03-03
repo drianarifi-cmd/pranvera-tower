@@ -7,8 +7,8 @@ export default function LocationTeaser() {
   const advantages = t.raw('advantages') as Array<{ icon: string; text: string }>;
 
   return (
-    <section style={{ padding: '7rem 4rem', backgroundColor: '#07111f' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center' }}>
+    <section className="px-6 py-16 md:px-16 md:py-28" style={{ backgroundColor: '#07111f' }}>
+      <div className="max-w-6xl mx-auto text-center">
         <AnimatedSection>
           <p className="section-label" style={{ marginBottom: '1rem' }}>{t('label')}</p>
           <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '3rem', fontWeight: 300, color: '#f9f4ec', marginBottom: '4rem' }}>
@@ -16,7 +16,7 @@ export default function LocationTeaser() {
           </h2>
         </AnimatedSection>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem' }}>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {advantages.map((adv: { icon: string; text: string }, i: number) => (
             <AnimatedSection key={i} delay={i * 0.1}>
               <div
