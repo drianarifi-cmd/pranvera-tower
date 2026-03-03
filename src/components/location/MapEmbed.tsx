@@ -1,6 +1,6 @@
 export default function MapEmbed() {
   const MAPS_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY;
-  const query = 'Pranvera+Tower+Pristina+Kosovo';
+  const query = '387+Zahir+Pajaziti+Podujeve+11000+Kosovo';
 
   if (!MAPS_KEY) {
     return (
