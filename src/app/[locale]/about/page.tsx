@@ -37,8 +37,8 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       </div>
 
       {/* Content Section */}
-      <div className="max-w-6xl mx-auto px-8 md:px-16 py-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+      <div className="max-w-6xl mx-auto px-6 md:px-16 py-12 md:py-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
           {/* Left: Quote */}
           <AnimatedSection>
             <blockquote className="font-serif italic text-gold text-2xl md:text-3xl leading-relaxed">
@@ -58,10 +58,10 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         </div>
 
         {/* Stats Row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 border-t border-gold/10 pt-16 mt-24">
+        <div className="grid grid-cols-2 md:grid-cols-4 border-t border-gold/10 pt-10 mt-12 md:pt-16 md:mt-24">
           {stats.map((stat, i) => (
-            <AnimatedSection key={stat.label} delay={i * 0.1} className="text-center py-8">
-              <div className="font-serif text-5xl md:text-6xl text-gold mb-3">
+            <AnimatedSection key={stat.label} delay={i * 0.1} className="text-center py-6 md:py-8">
+              <div className="font-serif text-4xl md:text-6xl text-gold mb-3">
                 <AnimatedCounter end={stat.end} prefix={stat.prefix} suffix={stat.suffix} />
               </div>
               <span className="section-label text-muted">{stat.label}</span>
