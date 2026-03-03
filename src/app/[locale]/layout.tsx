@@ -5,7 +5,6 @@ import { notFound } from 'next/navigation';
 import '../globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import PageTransition from '@/components/layout/PageTransition';
 
 const locales = ['en', 'sq'];
 
@@ -62,7 +61,7 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider messages={messages}>
       <Navbar locale={locale} />
-      <PageTransition>{children}</PageTransition>
+      {children}
       <Footer locale={locale} />
     </NextIntlClientProvider>
   );
