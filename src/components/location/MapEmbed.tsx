@@ -19,7 +19,7 @@ export default function MapEmbed() {
         loading="lazy"
         allowFullScreen
         referrerPolicy="no-referrer-when-downgrade"
-        src={`https://www.google.com/maps/embed/v1/place?key=${MAPS_KEY}&q=${query}&zoom=16`}
+        src={`https://www.google.com/maps/embed/v1/search?key=${MAPS_KEY}&q=${query}&zoom=17`}
         title="Pranvera Tower location map"
       />
     </div>
